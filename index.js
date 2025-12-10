@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -6,13 +7,19 @@ const app = express();
 app.use(express.json());
 
 // ================================
-// Conexión a MongoDB (tu link)
+// Conexión a MongoDB
 // ================================
-mongoose.connect("mongodb+srv://jeancarlo:jean12345@cluster0.3ixvnnj.mongodb.net/FastFoodApp?retryWrites=true&w=majority&appName=Cluster0");
-
+mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 db.on("error", (error) => console.error("Error al conectar:", error));
 db.once("open", () => console.log("BocattoValley DB conectada correctamente!"));
+
+// ================================
+// Ruta base para comprobar que funciona
+// ================================
+app.get("/", (req, res) => {
+  res.send("API BocattoValley funcionando correctamente");
+});
 
 // ================================
 // Rutas
@@ -23,5 +30,5 @@ app.use("/bocattovalley", productRouter);
 // ================================
 // Servidor
 // ================================
-const port = 3014;
+const port = process.env.PORT || 3014;
 app.listen(port, () => console.log(`Servidor BocattoValley en puerto ${port}`));
