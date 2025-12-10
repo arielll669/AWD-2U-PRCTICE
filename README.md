@@ -91,12 +91,16 @@ MONGODB_URI=mongodb://localhost:27017/bocattovalley
 PORT=3014
 ```
 
-**Para MongoDB Atlas (reemplaza con tus credenciales):**
+**Para MongoDB Atlas:**
 ```env
-MONGODB_URI=mongodb+srv://TU_USUARIO:TU_PASSWORD@TU_CLUSTER.mongodb.net/bocattovalley
+# Formato: mongodb+srv://usuario:contraseña@cluster.dominio.net/basededatos
+MONGODB_URI=[TU_STRING_DE_CONEXION_DE_ATLAS]
 ```
 
-⚠️ **IMPORTANTE**: Nunca subas el archivo `.env` a GitHub. Agrega `.env` a tu `.gitignore`
+⚠️ **IMPORTANTE DE SEGURIDAD**: 
+- Nunca subas el archivo `.env` a GitHub
+- Nunca compartas tus credenciales de MongoDB en código público
+- Siempre agrega `.env` a tu `.gitignore`
 
 ### 5. Crear archivo .gitignore
 
