@@ -13,7 +13,9 @@ Antes de iniciar, asegúrate de tener instalado:
 
 ## 🚀 Instalación y Configuración
 
-### 1. Clonar/Descargar el Proyecto
+### Opción A: Proyecto Existente
+
+#### 1. Clonar/Descargar el Proyecto
 
 ```powershell
 # Si es un repositorio Git
@@ -24,18 +26,57 @@ cd HM14-REST-BOCATTOVALLEY
 cd "C:\Users\ariel\Documents\5_semestre\WEB AVANZADA\u2\hm\HM14-REST-BOCATTOVALLEY"
 ```
 
-### 2. Abrir en Visual Studio Code
+#### 2. Abrir en Visual Studio Code
 
 ```powershell
 # Abrir VSCode en la carpeta del proyecto
 code .
 ```
 
-### 3. Instalar Dependencias
+#### 3. Instalar Dependencias
 
 ```powershell
 # Instalar todas las dependencias del proyecto
 npm install
+```
+
+### Opción B: Crear Proyecto desde Cero
+
+#### 1. Crear y configurar el proyecto
+
+```powershell
+# Crear carpeta del proyecto
+mkdir HM14-REST-BOCATTOVALLEY
+cd HM14-REST-BOCATTOVALLEY
+
+# Inicializar proyecto Node.js
+npm init -y
+
+# Abrir en VSCode
+code .
+```
+
+#### 2. Instalar dependencias principales
+
+```powershell
+# Instalar Express (framework web)
+npm install express
+
+# Instalar Mongoose (MongoDB ODM)
+npm install mongoose
+
+# Instalar dotenv (variables de entorno)
+npm install dotenv
+```
+
+#### 3. Instalar dependencias de desarrollo (opcional)
+
+```powershell
+# Instalar nodemon para reinicio automático en desarrollo
+npm install --save-dev nodemon
+
+# O con la forma corta
+npm install -D nodemon
 ```
 
 ### 4. Configurar Variables de Entorno
@@ -43,16 +84,35 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto:
 
 ```env
-# MongoDB Connection String
+# MongoDB Connection String (Local)
 MONGODB_URI=mongodb://localhost:27017/bocattovalley
 
 # Puerto del servidor (opcional, por defecto 3014)
 PORT=3014
 ```
 
-**Para MongoDB Atlas:**
+**Para MongoDB Atlas (reemplaza con tus credenciales):**
 ```env
-MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/bocattovalley
+MONGODB_URI=mongodb+srv://TU_USUARIO:TU_PASSWORD@TU_CLUSTER.mongodb.net/bocattovalley
+```
+
+⚠️ **IMPORTANTE**: Nunca subas el archivo `.env` a GitHub. Agrega `.env` a tu `.gitignore`
+
+### 5. Crear archivo .gitignore
+
+```
+# Dependencias
+node_modules/
+
+# Variables de entorno (¡MUY IMPORTANTE!)
+.env
+
+# Logs
+*.log
+
+# Runtime
+.DS_Store
+Thumbs.db
 ```
 
 ## 🎮 Comandos para Iniciar el Proyecto
@@ -215,15 +275,22 @@ npm install
 
 ## 🔧 Comandos Útiles en Terminal
 
+### Comandos de Inicialización (proyecto nuevo)
 ```powershell
-# Ver procesos en el puerto 3014
-netstat -ano | findstr :3014
+# Inicializar proyecto Node.js
+npm init -y
 
-# Instalar dependencias específicas
+# Instalar dependencias principales
 npm install express mongoose dotenv
 
 # Instalar nodemon para desarrollo
 npm install -D nodemon
+```
+
+### Comandos de Desarrollo
+```powershell
+# Ver procesos en el puerto 3014
+netstat -ano | findstr :3014
 
 # Ver versión de Node.js
 node --version
@@ -236,6 +303,30 @@ npm cache clean --force
 
 # Ver logs en tiempo real
 npm run dev
+
+# Instalar una dependencia específica
+npm install nombre-del-paquete
+
+# Desinstalar una dependencia
+npm uninstall nombre-del-paquete
+```
+
+### Comandos de Git
+```powershell
+# Inicializar repositorio Git
+git init
+
+# Agregar archivos al staging
+git add .
+
+# Hacer commit
+git commit -m "Mensaje del commit"
+
+# Agregar remote origin
+git remote add origin https://github.com/usuario/repositorio.git
+
+# Subir cambios
+git push -u origin main
 ```
 
 ## 👥 Contribuir
